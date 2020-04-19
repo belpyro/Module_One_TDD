@@ -44,7 +44,8 @@ namespace Test
         [Test]
         public void Sad_Emotion_Test()
         {
-            Assert.AreEqual(expected: "Upset: test text((((-__-)", new EmotionalMan(new SadEmotion()).EmotionalSpeech("Test text"));
+            Assert.AreEqual(expected: "Upset: " +
+                "test text((((-__-)", new EmotionalMan(new SadEmotion()).EmotionalSpeech("Test text"));
         }
     }
 }

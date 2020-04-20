@@ -1,4 +1,6 @@
-﻿using System.IO;
+﻿using CalculatorSample.Logidc.Logger;
+using System;
+using System.IO;
 
 namespace CalculatorSample.Logic
 {
@@ -10,24 +12,33 @@ namespace CalculatorSample.Logic
         {
             _logger = logger;
         }
-
-        public int Add(int x, int y)
+        #region Methods
+        public int Addition(int x, int y)
         {
-            _logger.Log($"Operation Sum: x={x}, y={y}");
+            _logger.Log($"Operation Addition: x={x}, y={y}");
             return x + y;
         }
-    }
-
-    public class Logger : ILogger
-    {
-        public void Log(string message)
+        public int Subtraction(int x, int y)
         {
-            File.AppendAllText("log.txt", message);
+            _logger.Log($"Operation Subtraction: x={x}, y={y}");
+            return x - y;
         }
-    }
+        public int Multiplication(int x, int y)
+        {
+            _logger.Log($"Operation Multiplication: x={x}, y={y}");
+            return x * y;
+        }
+        public int Division(int x, int y)
+        {
+            _logger.Log($"Operation Division: x={x}, y={y}");
+            return x / y;
+        }
+        public double Pow(double x, double y)
+        {
+            _logger.Log($"Operation Exponentiation: x={x}, y={y}");
+            return Math.Pow(x, y);
 
-    public interface ILogger
-    {
-        void Log(string message);
+        }
+        #endregion
     }
 }

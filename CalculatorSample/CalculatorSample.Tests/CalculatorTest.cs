@@ -20,6 +20,41 @@ namespace CalculatorSample.Tests
         }
 
         [Test]
+        public void Calculator_Test_SearchingNumber_Method_With_More_Than_One_Result()
+        {
+            var mock = MockInitiliser();
+            Assert.AreEqual(expected: new []  { 9, 19, 91 } , (new Calculator(mock.Object)).SearchNumber(10, 2));
+            mock.Verify(verifyExpression, Times.Exactly(1));
+        }
+
+        [Test]
+        public void Calculator_Test_SearchingNumber_Method_With_One_Result()
+        {
+            var mock = MockInitiliser();
+            Assert.AreEqual(expected: new[] { 1, 7, 7 }, (new Calculator(mock.Object)).SearchNumber(7, 1));
+            mock.Verify(verifyExpression, Times.Exactly(1));
+        }
+
+        [Test]
+        public void Calculator_Test_SearchingNumber_Method_With_Zero_Result()
+        {
+            var mock = MockInitiliser();
+            
+            Assert.AreEqual(expected: new int[] { }, (new Calculator(mock.Object)).SearchNumber(17, 1));
+            mock.Verify(verifyExpression, Times.Exactly(1));
+        }
+
+        [Test]
+
+        public void Calculator_Test_SearchingNumber_Exception()
+        {
+            var mock = MockInitiliser();
+            TestDelegate calcexcept = () => (new Calculator(mock.Object)).SearchNumber(-1, 0);
+            Assert.Throws<ArgumentNullException>(calcexcept);
+            mock.Verify(verifyExpression, Times.Exactly(0));
+        }
+
+        [Test]
         public void Calculator_Test_Plus_PositiveNum()
         {
             var mock = MockInitiliser();            

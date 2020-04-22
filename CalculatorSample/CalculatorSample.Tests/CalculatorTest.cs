@@ -21,15 +21,8 @@ namespace CalculatorSample.Tests
         {
             obj.Verify(l => l.Log(It.IsAny<string>()), Times.Exactly(1));
             Assert.AreEqual(expected: expectedReuslt, realResult);
-        }
-        public void Assert_Test_Search_Numbers(int a, int b, int c, double lenghtNumbers, double summNumbers)
-        {
-            int[] testArray = { a, b, c };
-            var calc = new Calculator();
-            int[] realResult = calc.GetArray_Numbers(lenghtNumbers, summNumbers);
-            Assert.AreEqual(testArray, realResult);
-        }
-        #region Сложение
+        }      
+
         [Test]
         public void Test_Sum_Positive_Numbers()
         {
@@ -60,8 +53,6 @@ namespace CalculatorSample.Tests
             Verify(mock, 3, calc);
         }
 
-        #endregion
-        #region Вычитание
         [Test]
         public void Test_Substr_Positive_Numbers()
         {
@@ -90,8 +81,7 @@ namespace CalculatorSample.Tests
             var calc = new Calculator(mock.Object).Subtraction(-5, 0);
             Verify(mock, -5, calc);
         }
-        #endregion
-        #region Умножение
+
         [Test]
         public void Test_Multi_Positive_Numbers()
         {
@@ -127,8 +117,7 @@ namespace CalculatorSample.Tests
             var calc = new Calculator(mock.Object).Multiplication(0, -12);
             Verify(mock, 0, calc);
         }
-        #endregion
-        #region Деление
+
         [Test]
         public void Test_Division_Positive_Numbers()
         {
@@ -179,8 +168,7 @@ namespace CalculatorSample.Tests
             var calc = new Calculator(mock.Object).Division(0, 3);
             Verify(mock, 0, calc);
         }
-        #endregion
-        #region Возведение в степень
+
         [Test]
         public void Test_Pow_Positive_Numbers_Positive_Pow()
         {
@@ -223,38 +211,5 @@ namespace CalculatorSample.Tests
             var calc = new Calculator(mock.Object).Pow(0, 3);
             Verify(mock, 0, calc);
         }
-        #endregion
-        #region Lesson-3
-        [Test]
-        public void Test_Search_Numbers_Summ_Positive_Bit_Positive_Count_Above_Zero()
-        {
-            Assert_Test_Search_Numbers(3, 12, 30, 2, 3);
-        }
-        [Test]
-        public void Test_Search_Numbers_Summ_Positive_Bit_Positive_Count_Zero()
-        {
-            Assert_Test_Search_Numbers(0, 0, 0, 2, 20);
-        }
-        [Test]
-        public void Test_Search_Numbers_Negative_Arg()
-        {
-            var exceptionThrown = false;
-            try
-            {
-                Assert_Test_Search_Numbers(0, 0, 0, 2, -7);
-            }
-            catch (Exception)
-            {
-                exceptionThrown = true;
-            }
-            Assert.IsTrue(exceptionThrown);
-            
-        }
-        [Test]
-        public void Test_Search_Numbers_Arg_Zero()
-        {
-            Assert_Test_Search_Numbers(0, 0, 0, 0, 0);
-        }
-        #endregion
     }
 }
